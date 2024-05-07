@@ -2,11 +2,16 @@ package com.example.flagchooserfinal;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import androidx.annotation.NonNull;
 
-import java.io.Serializable;
+/*
+This class is a data model class designed to store all of the data for each CardView.
+CountryName, country details, and the id for the country flag.
 
+Country Details haven't 100% been implemented. Currently, it just duplicates the country name.
+
+IMPORTANT: This class implements Parcelable to allow Android to intent this type of data to another Activity.
+ */
 public class CountryList implements Parcelable {
 
     String countryName;
