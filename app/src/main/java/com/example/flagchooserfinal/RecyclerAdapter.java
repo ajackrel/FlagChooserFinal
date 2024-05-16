@@ -60,6 +60,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Countr
             imageView = itemView.findViewById(R.id.imageView);
             cardView = itemView.findViewById(R.id.cardView);
             checkBox = itemView.findViewById(R.id.checkBox);
+
+
         }
 
     }
@@ -82,14 +84,38 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Countr
         holder.textViewDetails.setText(list.get(position).getCountryDetails());
         holder.imageView.setImageResource(list.get(position).getImage());
 
+        holder.checkBox.setChecked(list.get(position).isChecked());
+
+        holder.checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean checked = ((CheckBox)v).isChecked();
+                if (checked == true){
+                    list.get(position).setChecked(true);
+                }
+                else{
+                    list.get(position).setChecked(false);
+                }
+
+                for (int i = 0; i < list.size(); i++){
+                    System.out.println(list.get(i).toString());
+                }
+
+
+                notifyDataSetChanged();
+
+            }
+        });
+
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+
                 //if the CardView is clicked by the user, the checkbox will get filled
                 holder.checkBox.setChecked(true);
                 //retrieve the CountryList object at that index and add it to chosenList
-                chosenList.add(index, list.get(position));
+                chosenList.add(index, list.get(holder.getAdapterPosition()));
                 //increment the index so we're not overwriting anything
                 index++;
 

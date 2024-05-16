@@ -44,7 +44,6 @@
             android:layout_width="423dp"
             android:layout_height="148dp"
             android:background="#80392D2D"
-            android:backgroundTint="#BFB12222"
             android:fontFamily="@font/arimo"
             android:gravity="center"
             android:shadowColor="#000000"

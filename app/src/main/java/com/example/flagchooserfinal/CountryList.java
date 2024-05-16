@@ -17,11 +17,13 @@ public class CountryList implements Parcelable {
     String countryName;
     String countryDetails;
     int image;
+    boolean checked;
 
     public CountryList(String countryName, String countryDetails, int image) {
         this.countryName = countryName;
         this.countryDetails = countryDetails;
         this.image = image;
+        this.checked = false;
     }
 
     protected CountryList(Parcel in) {
@@ -60,6 +62,7 @@ public class CountryList implements Parcelable {
                 "countryName='" + countryName + '\'' +
                 ", countryDetails='" + countryDetails + '\'' +
                 ", image=" + image +
+                ", checked=" + checked +
                 '}';
     }
 
@@ -73,5 +76,18 @@ public class CountryList implements Parcelable {
         dest.writeString(countryName);
         dest.writeString(countryDetails);
         dest.writeInt(image);
+    }
+
+    public boolean isChecked(){
+
+        return false;
+    }
+
+    public void setChecked(boolean flag){
+        if (flag == true){
+            checked = true;
+        }
+        else
+            checked = false;
     }
 }
